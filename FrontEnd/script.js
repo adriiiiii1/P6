@@ -113,7 +113,6 @@ if (connexionBanner) {
         }
     });
 
-
         // click "Ajouter une photo"
         document.querySelector('.addImg').addEventListener('click', function(event) {
             event.preventDefault();
@@ -125,7 +124,6 @@ if (connexionBanner) {
             document.getElementById('secondModal').style.display = 'block';
         });
     
-
 
 // les miniatures des images dans la modal
 function genererMiniatures(images) {
@@ -150,7 +148,6 @@ function genererMiniatures(images) {
         galleryThumbnails.appendChild(thumbnailContainer);
     });
 }
-
 
     const reponse = await fetch("http://localhost:5678/api/works/");
     const works = await reponse.json();
@@ -232,12 +229,9 @@ const categories = await reponseCategories.json();
                 img.src = e.target.result;
                 img.alt = 'Image Preview';
                 img.style.width = '30%'; 
-    
-                // ACTUALISER imgInput
-                while (imgInput.firstChild) {
-                    imgInput.removeChild(imgInput.firstChild);
-                }
-    
+
+imgInput.querySelector('.originalInput').style.display = 'none';
+
                 previewContainer.appendChild(img);
                 imgInput.appendChild(previewContainer);
             };
@@ -341,6 +335,7 @@ async function ajouterImageAGalerie(title, file, category) {
 
     const json = await response.json();
     console.log(json);
+    location.reload();
 }
 
 
@@ -368,7 +363,7 @@ function checkButton() {
 fileInput.addEventListener('change', () => {
     console.log('File input changed.');
 
-    validerButton.style.backgroundColor = checkButton() ? '#00a854' : '#ccc';
+    validerButton.style.backgroundColor = checkButton() ? '#1D6154' : '#ccc';
     errorMessage.textContent = checkButton() ? '' : 'Veuillez remplir tous les champs requis.';
 
     validerButton.disabled = !checkButton();
@@ -378,7 +373,7 @@ fileInput.addEventListener('change', () => {
 titleInput.addEventListener('input', () => {
     console.log('Title input changed.');
 
-    validerButton.style.backgroundColor = checkButton() ? '#00a854' : '#ccc';
+    validerButton.style.backgroundColor = checkButton() ? '#1D6154' : '#ccc';
     errorMessage.textContent = checkButton() ? '' : 'Veuillez remplir tous les champs requis.';
 
     validerButton.disabled = !checkButton();
@@ -388,7 +383,7 @@ titleInput.addEventListener('input', () => {
 categoryInput.addEventListener('change', () => {
     console.log('Category input changed.');
 
-    validerButton.style.backgroundColor = checkButton() ? '#00a854' : '#ccc';
+    validerButton.style.backgroundColor = checkButton() ? '#1D6154' : '#ccc';
     errorMessage.textContent = checkButton() ? '' : 'Veuillez remplir tous les champs requis.';
 
     validerButton.disabled = !checkButton();
